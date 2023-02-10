@@ -1,17 +1,29 @@
-import Navbar from './Navbar';
-import Home from './Home';
+import Navbar from "./Navbar";
+import Home from "./Home";
+import Create from "./Create";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import BLogDetail from "./BLogDetail";
 
 function App() {
-  const title = 'Welcome to my blog';
-
-  const linh = { name: 'linh', age: 19}
   return (
-    <div className="App">
-      <Navbar></Navbar>
-      <div className="content">
-        <Home/>
+    <Router>
+      <div className="App">
+        <Navbar></Navbar>
+        <div className="content">
+          <Switch>
+            <Route exact path="/">
+              <Home></Home>
+            </Route>
+            <Route path="/create">
+              <Create></Create>
+            </Route>
+            <Route path="/blogs/:id">
+              <BLogDetail></BLogDetail>
+            </Route>
+          </Switch>
+        </div>
       </div>
-    </div>
+    </Router>
   );
 }
 
